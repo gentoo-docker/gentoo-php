@@ -12,7 +12,7 @@ RUN echo "dev-lang/php cli crypt ctype curl fileinfo filter fpm gd hash iconv in
 RUN echo "PHP_TARGETS=\"php5-6\"" >> /etc/portage/make.conf
 RUN emerge dev-lang/php
 RUN sed -i '/\[www\]/,$d' "/etc/php/fpm-$(eselect php show fpm)/php-fpm.conf"
-RUN echo "include=/etc/php/fpm.d/*.conf" >> "/etc/php/fpm-/php-fpm.conf"
+RUN echo "include=/etc/php/fpm.d/*.conf" >> "/etc/php/fpm-$(eselect php show fpm)/php-fpm.conf"
 RUN sed -i 's/;date.timezone =/date.timezone = UTC/' "/etc/php/fpm-$(eselect php show fpm)/php.ini" \
     sed -i 's/;date.timezone =/date.timezone = UTC/' "/etc/php/cli-$(eselect php show fpm)/php.ini"
 
