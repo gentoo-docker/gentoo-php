@@ -30,9 +30,4 @@ WORKDIR /var/www
 
 EXPOSE 9000
 
-CMD [
-    "/usr/bin/php-fpm",
-    "-y",
-    "/etc/php/fpm-$PHP_VERSION/php-fpm.conf",
-    "--nodaemonize"
-]
+CMD ["php-fpm", "-y", "/etc/php/fpm-$PHP_VERSION/php-fpm.conf", "--nodaemonize"]
