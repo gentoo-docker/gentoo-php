@@ -15,6 +15,8 @@ RUN echo "export PHP_VERSION=$(eselect php show fpm)" > /etc/profile.d/php.sh &&
     source /etc/profile
 RUN sed -i '/\[www\]/,$d' "/etc/php/fpm-$PHP_VERSION/php-fpm.conf"
 RUN echo "include=/etc/php/fpm.d/*.conf" >> "/etc/php/fpm-$PHP_VERSION/php-fpm.conf"
+RUN sed -i 's/;date.timezone =/date.timezone = UTC/' "/etc/php/fpm-$PHP_VERSION/php.ini" \
+    sed -i 's/;date.timezone =/date.timezone = UTC/' "/etc/php/cli-$PHP_VERSION/php.ini"
 
 # forward logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/php-fpm.log
