@@ -11,11 +11,11 @@ RUN echo "media-libs/gd jpeg png" >> /etc/portage/package.use
 RUN echo "dev-lang/php cli crypt ctype curl fileinfo filter fpm gd hash iconv intl ipv6 json mhash mysqli mysqlnd opcache pdo phar posix readline session simplexml sockets ssl tokenizer unicode xml xmlreader xmlwriter zip zlib" >> /etc/portage/package.use
 RUN echo "PHP_TARGETS=\"php5-6\"" >> /etc/portage/make.conf
 RUN emerge dev-lang/php
-RUN echo "export PHP_VERSION=$(eselect php show fpm)" > /etc/profile.d/php.sh && \
-    env-update && \
-    source /etc/profile
+
+ENV PHP_VERSION $(eselect php show fpm)
+
 RUN sed -i '/\[www\]/,$d' "/etc/php/fpm-$PHP_VERSION/php-fpm.conf"
-RUN echo "include=/etc/php/fpm.d/*.conf" >> "/etc/php/fpm-$PHP_VERSION/php-fpm.conf"
+RUN echo "include=/etc/php/fpm.d/*.conf" >> "/etc/php/fpm-/php-fpm.conf"
 RUN sed -i 's/;date.timezone =/date.timezone = UTC/' "/etc/php/fpm-$PHP_VERSION/php.ini" \
     sed -i 's/;date.timezone =/date.timezone = UTC/' "/etc/php/cli-$PHP_VERSION/php.ini"
 
