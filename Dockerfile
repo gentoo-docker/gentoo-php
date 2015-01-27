@@ -22,9 +22,9 @@ RUN ln -sf /dev/stderr /var/log/fpm-php.www.log
 
 COPY www.conf /etc/php/fpm.d/www.conf
 
-VOLUME /var/www
+#VOLUME /var/www
 
-WORKDIR /var/www
+#WORKDIR /var/www
 
 EXPOSE 9000
 
