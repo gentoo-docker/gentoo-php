@@ -8,7 +8,7 @@ RUN echo "PHP_INI_VERSION=\"production\"" >> /etc/portage/make.conf
 RUN echo "dev-lang/php ~amd64" >> /etc/portage/package.keywords
 RUN echo "app-admin/eselect-php fpm" >> /etc/portage/package.use
 RUN echo "media-libs/gd jpeg png" >> /etc/portage/package.use
-RUN echo "dev-lang/php cli crypt ctype curl fileinfo filter fpm gd hash iconv intl ipv6 json mhash mysqli mysqlnd opcache pdo phar posix readline session simplexml sockets ssl tokenizer unicode xml xmlreader xmlwriter zip zlib" >> /etc/portage/package.use
+RUN echo "dev-lang/php cli crypt ctype curl fileinfo filter fpm gd hash iconv intl ipv6 json mhash mysql mysqli mysqlnd opcache pdo phar posix readline session simplexml sockets ssl tokenizer unicode xml xmlreader xmlwriter zip zlib" >> /etc/portage/package.use
 RUN echo "PHP_TARGETS=\"php5-6\"" >> /etc/portage/make.conf
 RUN emerge dev-lang/php
 RUN sed -i '/\[www\]/,$d' "/etc/php/fpm-php5.6/php-fpm.conf"
